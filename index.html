@@ -6,6 +6,9 @@
     <title>
       lenary/ginatra @ GitHub
     </title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+    <script src="jquery.github-voice.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="github-voice.css" type="text/css" media="screen" charset="utf-8" />
     <style type="text/css">
 /*<![CDATA[*/
     body {
@@ -29,8 +32,25 @@
     pre { background: #000; color: #fff; padding: 15px;}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
+    ol {
+      list-style: none;
+      text-align:left;
+      margin: 0;
+    	padding: 0;
+    	border: 0;
+    	outline: 0;
+    	font-weight: inherit;
+    	font-style: inherit;
+    	font-size: 100%;
+    	font-family: inherit;
+    	vertical-align: baseline;}
     /*]]>*/
     </style>
+    <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      $('a.issues').githubVoice('lenary', 'ginatra');
+    });
+    </script>
   </head>
   <body>
     <p>
@@ -38,14 +58,14 @@
     </p>
     <div id="container">
       <div class="download">
-        <a href="http://github.com/lenary/ginatra/zipball/master"><img border="0" width="90" src="http://github.com/images/modules/download/zip.png" /></a> <a href="http://github.com/lenary/ginatra/tarball/master"><img border="0" width="90" src="http://github.com/images/modules/download/tar.png" /></a>
+        <a href="http://github.com/lenary/ginatra/zipball/master"><img border="0" width="90" src="http://github.com/images/modules/download/zip.png" /></a> <a href="http://github.com/lenary/ginatra/tarball/master"><img border="0" width="90" src="http://github.com/images/modules/download/tar.png" /></a><br />
       </div>
       <h1>
         <a href="http://github.com/lenary/ginatra">ginatra</a> <span class="small">by <a href="http://github.com/lenary">lenary</a></span>
       </h1>
       <div class="description">
-        This project is to make a clone of gitweb in Ruby and Sinatra. It serves git repositories out of a specified directory at the moment, but i have plans to make it function just as gitweb does, including leeching config files and suchlike.
-      </div>
+        This project is to make a clone of gitweb in Ruby and Sinatra. It serves git repositories out of a specified directory at the moment, but i have plans to make it function just as gitweb does, including leeching config files and suchlike.</div>
+        <p><strong><a href="http://github.com/lenary/ginatra/issues" class="issues">Issues</a></strong></p>
       <h2>
         Install
       </h2>
@@ -57,15 +77,15 @@ git version 1.6.3</code></pre>
       <p>
         You’ll need a few gems just to serve git repositories:
       </p>
-      <pre><code>(sudo) gem install sinatra grit coderay</code></pre>
+      <pre><code>$ (sudo) gem install sinatra grit coderay</code></pre>
       <p>
         To run the test suite, you also need:
       </p>
-      <pre><code>(sudo) gem install rspec webrat rack-test cucumber</code></pre>
+      <pre><code>$ (sudo) gem install rspec webrat rack-test cucumber</code></pre>
       <p>
         Then clone this repository:
       </p>
-      <pre><code>git clone git://github.com/lenary/ginatra.git</code></pre>
+      <pre><code>$ git clone git://github.com/lenary/ginatra.git</code></pre>
       <p>
         You’ll also need to (<code>--bare</code>) clone <code>atmos/hancock-client</code> into the repos directory and call it test: (don’t ask, it was just a repo i chose at random)
       </p>
@@ -76,16 +96,16 @@ git version 1.6.3</code></pre>
       <p>
         If you’re just using it in development, use the following to run Ginatra:
       </p>
-      <pre><code>ruby ginatra.rb</code></pre>
+      <pre><code>$ ruby ginatra.rb</code></pre>
       <p>
-        There are issues running sinatra with thin, but then there are also issues running it on passenger. The sinatra issues relate to sinatra not being upgraded to use rack 1.0, so these should be sorted out soon.
+        There are issues running sinatra on passenger. We discourage Ginatra's use on passenger until we can make it stable. 
       </p>
       <p>
         To clone repositories so that Ginatra can see them, clone the repositories into <code>./repos/</code> - they will be served automatically. Use the <code>--bare</code> switch to both save space and make sure Ginatra can read them. If you rename them, make sure the directory ends in `.git’. For Example:
       </p>
-      <pre><code>cd repos
-git clone --bare git://github.com/lenary/ginatra.git
-git clone --bare git://github.com/mojombo/grit.git fun.git</code></pre>
+      <pre><code>$ cd repos
+$ git clone --bare git://github.com/lenary/ginatra.git
+$ git clone --bare git://github.com/mojombo/grit.git fun.git</code></pre>
       <h2 id="screenshots">
         Screenshots
       </h2>
@@ -93,25 +113,25 @@ git clone --bare git://github.com/mojombo/grit.git fun.git</code></pre>
         <strong>Index</strong>
       </p>
       <p>
-        <img src="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYuRcM&amp;w=500&amp;h=500" alt="Ginatra Index" title="Ginatra Index" />
+        <a href="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYuRcM"><img src="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYuRcM&amp;w=500&amp;h=500" alt="Ginatra Index" title="Ginatra Index" /></a>
       </p>
       <p>
         <strong>Log</strong>
       </p>
       <p>
-        <img src="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYuhcM&amp;w=500&amp;h=500" alt="Ginatra Log" title="Ginatra Log" />
+        <a href="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYuhcM"><img src="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYuhcM&amp;w=500&amp;h=500" alt="Ginatra Log" title="Ginatra Log" /></a>
       </p>
       <p>
         <strong>Commit</strong>
       </p>
       <p>
-        <img src="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYuxcM&amp;w=500&amp;h=500" alt="Ginatra Commit" title="Ginatra Commit" />
+        <a href="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYuxcM"><img src="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYuxcM&amp;w=500&amp;h=500" alt="Ginatra Commit" title="Ginatra Commit" /></a>
       </p>
       <p>
         <strong>Tree</strong>
       </p>
       <p>
-        <img src="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYuxcM&amp;w=500&amp;h=500" alt="Ginatra Tree" title="Ginatra Tree" />
+        <a href="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYuxcM"><img src="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYuxcM&amp;w=500&amp;h=500" alt="Ginatra Tree" title="Ginatra Tree" /></a>
       </p>
       <h2>
         License
@@ -148,11 +168,10 @@ git clone --bare git://github.com/mojombo/grit.git fun.git</code></pre>
         Thanks
       </h2>
       <ul>
-        <li>tekkub - For help with Grit</li>
-        <li>schacon - For help with Grit</li>
+        <li>tekkub &amp; schacon - For help with Grit</li>
         <li>cirwin - For moral support and design help</li>
         <li>#git - for any other problems I had</li>
-        <li>Picol Project (http://picol.org) - for the icons</li>
+        <li>Picol Project (<a href="http://picol.org">http://picol.org</a>) - for the icons</li>
         <li>raggi - For a good refactor</li>
       </ul>
       <h2>
