@@ -60,7 +60,7 @@ namespace :setup do
 
   desc "Installs the Required Gems"
   task :gems do |t|
-    gems = %w(grit)
+    gems = %w(grit kematzy-sinatra-cache)
     puts %x(gem install #{gems.join(" ")})
   end
 

@@ -1,8 +1,6 @@
 require "rubygems"
 require "sinatra"
 require "grit"
-
-# Gem: kematzy-sinatra-cache
 require 'sinatra/cache'
 
 
