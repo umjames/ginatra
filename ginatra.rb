@@ -65,7 +65,7 @@ module Ginatra
       @repo_list = []
       Sinatra::Application.git_dirs.each do |git_dir|
         @repo_list << Dir.glob(git_dir).
-                          delete_if{|e| Sinatra::Application.ignored_files.include? e }.
+                          delete_if{|e| Sinatra::Application.ignored_files.include?(e) }.
                           map{|e| File.expand_path(e) }
       end
       @repo_list.flatten!
