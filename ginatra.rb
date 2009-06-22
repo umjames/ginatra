@@ -116,7 +116,7 @@ module Ginatra
 
     def self.create!(param)
       @repo_list = MultiRepoList.new
-      @repo = @repo_list.find{|r| r.param =~ /^#{Regexp.escape param }$/}
+      @repo = @repo_list.find{ |r| r.param =~ /^#{Regexp.escape param }$/ }
     end
   end
 
