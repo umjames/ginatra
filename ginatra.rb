@@ -116,7 +116,7 @@ module Ginatra
 
     def self.create!(param)
       @repo_list = MultiRepoList.new
-      @repo = @repo_list.find{ |r| r.param =~ /^#{Regexp.escape param }$/ }
+      @repo = @repo_list.find { |r| r.param =~ /^#{Regexp.escape param }$/ }
     end
   end
 
@@ -137,10 +137,9 @@ module Ginatra
     end
 
     def actor_boxes(commit)
-      if commit.author.name == commit.committer.name
-        actor_box(commit.committer, :committer, commit.committed_date)
-      else
-        actor_box(commit.author, :author, commit.authored_date) + actor_box(commit.committer, :committer, commit.committed_date)
+      o = actor_box(commit.committer, :committer, commit.committed_date)
+      if commit.author.name != commit.committer.name
+        o = actor_box(commit.author, :author, commit.authored_date) + o
       end
     end
 
