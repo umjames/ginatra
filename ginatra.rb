@@ -194,16 +194,7 @@ module Ginatra
     alias :h :html_escape
     
     def commit_ref(ref, repo_param)
-      ref_class = case ref.class
-                  when Grit::Tag
-                    "tag"
-                  when Grit::Head
-                    "head"
-                  when Grit::Remote
-                    "remote"
-                  else
-                    ""
-                  end
+      ref_class = ref.class.to_s.split("::")[1].to_s
       "<a class=\"ref #{ref_class}\" href=\"/#{repo_param}/#{ref.name}\">#{ref.name}</a>"
     end
     
