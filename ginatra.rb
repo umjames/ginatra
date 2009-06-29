@@ -199,7 +199,7 @@ module Ginatra
     end
     
     def commit_refs(commit, repo_param)
-      commit.refs.map{|r| commit_ref(r, repo_param) }.join("\n")
+      commit.refs.map{ |r| commit_ref(r, repo_param) }.join("\n")
     end
   end
 
