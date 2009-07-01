@@ -46,9 +46,9 @@ module Ginatra
 
     def initialize
       @repo_list = Dir.entries(Sinatra::Application.git_dir).
-                   delete_if{|e| Sinatra::Application.ignored_files.include?(e) }.
-                   map!{|e| File.expand_path(e, Sinatra::Application.git_dir) }.
-                   map!{|e| Repo.new(e) }
+                   delete_if{ |e| Sinatra::Application.ignored_files.include?(e) }.
+                   map!{ |e| File.expand_path(e, Sinatra::Application.git_dir) }.
+                   map!{ |e| Repo.new(e) }
     end
 
     def find(local_param)
