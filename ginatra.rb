@@ -160,17 +160,28 @@ module Ginatra
     end
     
     def diff(diff)
-      # work in progress
-      diff
-      # diff = diff.gsub(/^---\s(.*)$/, '')
-      # diff = diff.gsub(/^\+\+\+\s(.*)$/, '')
-      # line_num = /^@@\s-(\d+)/.match(diff)[1].to_i - 1
-      # diff = diff.gsub(/^@@(.*)/, '')
-      # diff = diff.gsub(32.chr, "&nbsp;")
-      # diff = diff.gsub(/^-\s?(.*)$/) { "<div class='rm'><span class='sign'>-</span>#{$1}</div>"}
-      # diff = diff.gsub(/^\+\s?(.*)$/) { "<div class='add'><span class='sign'>+</span>#{$1}</div>"}
-      # diff = diff.split("\n").map { |l| line_num += 1; "<div class='line'><span style='float:left'>#{line_num}</span> #{l}</div>" }.join("")
-      # diff = diff.gsub(/\n/, "<br>")
+      diff = diff.gsub(/^---\s(.*)$/, '')
+      diff = diff.gsub(/^\+\+\+\s(.*)$/, '')
+      line_num = (/^@@\s-(\d+)/.match(diff)[1].to_i || 1) - 1
+      diff = diff.gsub(/^@@(.*)/, '')
+      diff = diff.gsub(32.chr, "&nbsp;")
+      diff = diff.gsub(/^-\s?(.*)$/) { "<div class='rm'><span class='sign'>-</span>#{$1}</div>"}
+      diff = diff.gsub(/^\+\s?(.*)$/) { "<div class='add'><span class='sign'>+</span>#{$1}</div>"}
+      lines = diff.split("\n")[3..-1]
+      diff = lines.join("\n")
+      number_of_lines = lines.size
+      output = "<table>
+      <tr>
+        <td>"
+      
+      for num in (1 + line_num)..(number_of_lines + line_num)
+        output << "<div class='line_num'>#{num}</div>"
+      end
+      
+      output << "</td><td>"
+      diff = diff.gsub(/\n/, "<br>")
+      output << diff
+      output << "</td></tr></table>"
     end
 
     # Stolen from rails: ActionView::Helpers::TextHelper#simple_format
