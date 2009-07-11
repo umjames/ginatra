@@ -150,13 +150,27 @@ module Ginatra
       out = commit.diffs.map do |diff|
         count = count + 1
         if diff.deleted_file
-          %(<li class='rm'><a href='#file_#{count}'>#{diff.a_path}</a></li>)
+          %(<li class='file_rm'><a href='#file_#{count}'>#{diff.a_path}</a></li>)
         else
           cla = diff.new_file ? "add" : "diff"
-          %(<li class='#{cla}'><a href='#file_#{count}'>#{diff.a_path}</a></li>)
+          %(<li class='file_#{cla}'><a href='#file_#{count}'>#{diff.a_path}</a></li>)
         end
       end
-      "<ul class='commit-files'>#{out.join}</ul>"
+      "<ul id='files'>#{out.join}</ul>"
+    end
+    
+    def diff(diff)
+      # work in progress
+      diff
+      # diff = diff.gsub(/^---\s(.*)$/, '')
+      # diff = diff.gsub(/^\+\+\+\s(.*)$/, '')
+      # line_num = /^@@\s-(\d+)/.match(diff)[1].to_i - 1
+      # diff = diff.gsub(/^@@(.*)/, '')
+      # diff = diff.gsub(32.chr, "&nbsp;")
+      # diff = diff.gsub(/^-\s?(.*)$/) { "<div class='rm'><span class='sign'>-</span>#{$1}</div>"}
+      # diff = diff.gsub(/^\+\s?(.*)$/) { "<div class='add'><span class='sign'>+</span>#{$1}</div>"}
+      # diff = diff.split("\n").map { |l| line_num += 1; "<div class='line'><span style='float:left'>#{line_num}</span> #{l}</div>" }.join("")
+      # diff = diff.gsub(/\n/, "<br>")
     end
 
     # Stolen from rails: ActionView::Helpers::TextHelper#simple_format
@@ -240,7 +254,7 @@ end
 get '/:repo/commit/:commit' do
   @repo = @repo_list.find(params[:repo])
   @commit = @repo.commit(params[:commit]) # can also be a ref
-  cache erb(:commit)
+  erb(:commit)
 end
 
 get '/:repo/tree/:tree' do
