@@ -2,6 +2,8 @@ require "rubygems"
 require "sinatra"
 require "grit"
 require 'sinatra/cache'
+$:.unshift("lib")
+require "coderay"
 
 
 
@@ -160,28 +162,7 @@ module Ginatra
     end
     
     def diff(diff)
-      diff = diff.gsub(/^---\s(.*)$/, '')
-      diff = diff.gsub(/^\+\+\+\s(.*)$/, '')
-      line_num = (/^@@\s-(\d+)/.match(diff)[1].to_i || 1) - 1
-      diff = diff.gsub(/^@@(.*)/, '')
-      diff = diff.gsub(32.chr, "&nbsp;")
-      diff = diff.gsub(/^-\s?(.*)$/) { "<div class='rm'><span class='sign'>-</span>#{$1}</div>"}
-      diff = diff.gsub(/^\+\s?(.*)$/) { "<div class='add'><span class='sign'>+</span>#{$1}</div>"}
-      lines = diff.split("\n")[3..-1]
-      diff = lines.join("\n")
-      number_of_lines = lines.size
-      output = "<table>
-      <tr>
-        <td>"
-      
-      for num in (1 + line_num)..(number_of_lines + line_num)
-        output << "<div class='line_num'>#{num}</div>"
-      end
-      
-      output << "</td><td>"
-      diff = diff.gsub(/\n/, "<br>")
-      output << diff
-      output << "</td></tr></table>"
+      diff = CodeRay.scan(diff, :diff).div(:line_numbers => :table, :css => :class)
     end
 
     # Stolen from rails: ActionView::Helpers::TextHelper#simple_format
@@ -306,6 +287,16 @@ get '/:repo/blob/:tree/*' do
     # this allows people to put in the remaining part of the path to the folder, rather than endless clicks like you need in github
     redirect "/#{params[:repo]}/tree/#{params[:tree]}/#{params[:splat].first}"
   else
+    extension = params[:splat].first.split(".").last
+    @highlighter = case extension
+      when 'js'
+        'javascript'
+      when 'css'
+        'css'
+    end
+        
+    @highlighter ||= 'ruby'
+        
     erb :blob
   end
 end
