@@ -209,7 +209,11 @@ module Ginatra
     end
 
     def archive_link(tree, repo_param)
-      "<a class=\"download\" href=\"/#{repo_param}/archive/#{tree.id}.tar.gz\" title=\"Download a tar.gz snapshot of this Tree\">Download</a>"
+      "<a class=\"download\" href=\"/#{repo_param}/archive/#{tree.id}.tar.gz\" title=\"Download a tar.gz snapshot of this Tree\">Download Archive</a>"
+    end
+
+    def patch_link(commit, repo_param)
+      "<a class=\"download\" href=\"/#{repo_param}/commit/#{commit.id}.patch\" title=\"Download a patch file of this Commit\">Download Patch</a>"
     end
   end
 
@@ -245,6 +249,12 @@ get '/:repo/:ref' do
   @commits = @repo.commits(params[:ref])
   raise Ginatra::CommitsError if @commits.empty?
   erb :log
+end
+
+get '/:repo/commit/:commit.patch' do
+  response['Content-Type'] = "text/plain"
+  @repo = @repo_list.find(params[:repo])
+  @repo.git.format_patch({}, "--stdout", "-1", params[:commit])
 end
 
 get '/:repo/commit/:commit' do
