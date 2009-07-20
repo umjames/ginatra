@@ -207,6 +207,10 @@ module Ginatra
     def commit_refs(commit, repo_param)
       commit.refs.map{ |r| commit_ref(r, repo_param) }.join("\n")
     end
+
+    def archive_link(tree, repo_param)
+      "<a class=\"download\" href=\"/#{repo_param}/archive/#{tree.id}.tar.gz\" title=\"Download a tar.gz snapshot of this Tree\">Download</a>"
+    end
   end
 
 end
@@ -247,6 +251,12 @@ get '/:repo/commit/:commit' do
   @repo = @repo_list.find(params[:repo])
   @commit = @repo.commit(params[:commit]) # can also be a ref
   erb(:commit)
+end
+
+get '/:repo/archive/:tree.tar.gz' do
+  response['Content-Type'] = "application/x-tar-gz"
+  @repo = @repo_list.find(params[:repo])
+  @repo.archive_tar_gz(params[:tree])
 end
 
 get '/:repo/tree/:tree' do
@@ -302,6 +312,7 @@ get '/:repo/blob/:tree/*' do
 end
 
 get '/:repo/:ref/:page' do
+  pass unless params[:page] =~ /^(\d)+$/
   params[:page] = params[:page].to_i
   @repo = @repo_list.find(params[:repo])
   @commits = @repo.commits(params[:ref], 10, (params[:page] - 1) * 10)
