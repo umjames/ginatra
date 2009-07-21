@@ -215,6 +215,16 @@ module Ginatra
     def patch_link(commit, repo_param)
       "<a class=\"download\" href=\"/#{repo_param}/commit/#{commit.id}.patch\" title=\"Download a patch file of this Commit\">Download Patch</a>"
     end
+
+    # stolen from Marley
+    def rfc_date(datetime)
+      datetime.strftime("%Y-%m-%dT%H:%M:%SZ") # 2003-12-13T18:30:02Z
+    end
+
+    # stolen from Marley
+    def hostname
+      (request.env['HTTP_X_FORWARDED_SERVER'] =~ /[a-z]*/) ? request.env['HTTP_X_FORWARDED_SERVER'] : request.env['HTTP_HOST']
+    end
   end
 
 end
@@ -236,11 +246,26 @@ get '/' do
   erb :index
 end
 
+get '/:repo.atom' do
+  @repo = @repo_list.find(params[:repo])
+  @commits = @repo.commits
+  return "" if @commits.empty?
+  builder :atom, :layout => nil
+end
+
 get '/:repo' do
   @repo = @repo_list.find(params[:repo])
   @commits = @repo.commits
   raise Ginatra::CommitsError if @commits.empty?
   erb :log
+end
+
+get '/:repo/:ref.atom' do
+  params[:page] = 1
+  @repo = @repo_list.find(params[:repo])
+  @commits = @repo.commits(params[:ref])
+  return "" if @commits.empty?
+  builder :atom, :layout => nil
 end
 
 get '/:repo/:ref' do
