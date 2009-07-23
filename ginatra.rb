@@ -225,6 +225,10 @@ module Ginatra
     def hostname
       (request.env['HTTP_X_FORWARDED_SERVER'] =~ /[a-z]*/) ? request.env['HTTP_X_FORWARDED_SERVER'] : request.env['HTTP_HOST']
     end
+    
+    def atom_feed_link(repo_param, ref=nil)
+      "<a href=\"/#{repo_param}#{"/#{ref}" if !ref.nil?}.atom\" title=\"Atom Feed\" class=\"atom\">Feed</a>"
+    end
   end
 
 end
