@@ -1,0 +1,882 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Class: Ginatra::RepoList</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (R)</a> &raquo; 
+    <a title="Ginatra" href="../Ginatra.html">Ginatra</a>
+     &raquo; 
+    <span class="title">RepoList</span>
+  
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Namespace List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Ginatra::RepoList 
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">Singleton</dd>
+      
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/ginatra/repo_list.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+A singleton class that lets us make and use a constantly updating list of
+repositories.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  
+  <h2>Attribute Summary</h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#list (instance method)" href="#list-instance_method">- (Object) <strong>list</strong> </a>
+  
+  </span>
+  
+    
+    
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+Returns the value of attribute list.
+
+</span>
+  
+</li>
+
+    
+  </ul>
+
+
+  <h2>Method Summary</h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="find (class method)" href="#find-class_method">+ (Object) <strong>find</strong>(local_param) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+This just brings up the find method to the class scope.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="list (class method)" href="#list-class_method">+ (Array&lt;Ginatra::Repo&gt;) <strong>list</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+The preferred way to access the list publicly.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="method_missing (class method)" href="#method_missing-class_method">+ (Object) <strong>method_missing</strong>(sym, *args, &amp;block) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+allows missing methods to cascade to the instance,.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#add (instance method)" href="#add-instance_method">- (Object) <strong>add</strong>(path, param = File.split(path)) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+adds a Repo corresponding to the path it found a git repo at in the
+configured globs.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#find (instance method)" href="#find-instance_method">- (Ginatra::Repo) <strong>find</strong>(local_param) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+quick way to look up if there is a repo with a given param in the list.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#has_repo? (instance method)" href="#has_repo%3F-instance_method">- (true) <strong>has_repo?</strong>(local_param) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+checks to see if the list contains a repo with a param matching the one
+passed in.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#initialize (instance method)" href="#initialize-instance_method">- (RepoList) <strong>initialize</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+This creates the list, then does the first refresh to populate it.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#refresh (instance method)" href="#refresh-instance_method">- (Object) <strong>refresh</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+searches through the configured directory globs to find all the
+repositories and adds them if they&#8217;re not already there.
+
+</span>
+  
+</li>
+
+    
+  </ul>
+
+
+  <div id="constructor_details">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><a title="RepoList" href="">RepoList</a></tt>) <strong>initialize</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This creates the list, then does the first refresh to populate it.
+</p>
+<p>
+It returns what refresh returns.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><a title="RepoList" href="">RepoList</a></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+a new instance of RepoList
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/repo_list.rb', line 14</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='list identifier id'>list</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='refresh identifier id'>refresh</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="attr_details">
+    <h2>Attribute Details</h2>
+    
+      
+      <span id="list=-instance_method"></span>
+      <span id="list-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="list-instance_method">
+  
+    - (<tt>Object</tt>) <strong>list</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute list
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/repo_list.rb', line 8</span>
+
+<span class='def def kw'>def</span> <span class='list identifier id'>list</span>
+  <span class='@list ivar id'>@list</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="method_details">
+    <h2>Method Details</h2>
+    
+      <div class="method_details first">
+  <p class="signature first" id="find-class_method">
+  
+    + (<tt>Object</tt>) <strong>find</strong>(local_param) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This just brings up the find method to the class scope.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a title="Ginatra::RepoList#find" href="#find-instance_method">Ginatra::RepoList#find</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80
+81
+82</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/repo_list.rb', line 80</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='local_param identifier id'>local_param</span><span class='rparen token'>)</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='instance identifier id'>instance</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='local_param identifier id'>local_param</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="list-class_method">
+  
+    + (<tt>Array&lt;<a title="Ginatra::Repo" href="Repo.html">Ginatra::Repo</a>&gt;</tt>) <strong>list</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The preferred way to access the list publicly.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<a title="Ginatra::Repo" href="Repo.html">Ginatra::Repo</a>&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+a list of ginatra repos.
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/repo_list.rb', line 22</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='list identifier id'>list</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='instance identifier id'>instance</span><span class='dot token'>.</span><span class='refresh identifier id'>refresh</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='instance identifier id'>instance</span><span class='dot token'>.</span><span class='list identifier id'>list</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="method_missing-class_method">
+  
+    + (<tt>Object</tt>) <strong>method_missing</strong>(sym, *args, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+  <p class="note todo">
+    <strong>TODO:</strong> 
+    
+do we need this?
+
+
+  </p>
+
+  <p class="note todo">
+    <strong>TODO:</strong> 
+    
+update the respond_to? method if we do.
+
+
+Caution! contains: Magic
+
+
+  </p>
+
+<p>
+allows missing methods to cascade to the instance,
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+90
+91
+92</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/repo_list.rb', line 90</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='sym identifier id'>sym</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='instance identifier id'>instance</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='sym identifier id'>sym</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="add-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add</strong>(path, param = File.split(path)) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+  <p class="note todo">
+    <strong>TODO:</strong> 
+    
+Docs: what does this return?
+
+
+  </p>
+
+<p>
+adds a Repo corresponding to the path it found a git repo at in the
+configured globs. Checks to see that it&#8217;s not there first
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>path</span>
+      
+      
+      
+        &mdash;
+        
+the path of the git repo
+
+
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>param</span>
+      
+      
+        <em class="default">(defaults to: <tt>File.split(path)</tt>)</em>
+      
+      
+        &mdash;
+        
+the param of the repo if it differs, for looking to see if it&#8217;s
+already on the list
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+46
+47
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/repo_list.rb', line 46</span>
+
+<span class='def def kw'>def</span> <span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='comma token'>,</span> <span class='param identifier id'>param</span> <span class='assign token'>=</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='last identifier id'>last</span><span class='rparen token'>)</span>
+  <span class='unless unless kw'>unless</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='has_repo? fid id'>has_repo?</span><span class='lparen token'>(</span><span class='param identifier id'>param</span><span class='rparen token'>)</span>
+    <span class='list identifier id'>list</span> <span class='lshft op'>&lt;&lt;</span> <span class='Repo constant id'>Repo</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="find-instance_method">
+  
+    - (<tt><a title="Ginatra::Repo" href="Repo.html">Ginatra::Repo</a></tt>) <strong>find</strong>(local_param) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+quick way to look up if there is a repo with a given param in the list. If
+not, it refreshes the list and tries again.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>local_param</span>
+      
+      
+      
+        &mdash;
+        
+the param to lookup
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><a title="Ginatra::Repo" href="Repo.html">Ginatra::Repo</a></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the repository corresponding to that param.
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68
+69
+70
+71
+72
+73
+74
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/repo_list.rb', line 68</span>
+
+<span class='def def kw'>def</span> <span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='local_param identifier id'>local_param</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='repo identifier id'>repo</span> <span class='assign token'>=</span> <span class='list identifier id'>list</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='r identifier id'>r</span><span class='bitor op'>|</span> <span class='r identifier id'>r</span><span class='dot token'>.</span><span class='param identifier id'>param</span> <span class='eq op'>==</span> <span class='local_param identifier id'>local_param</span> <span class='rbrace token'>}</span>
+    <span class='repo identifier id'>repo</span>
+  <span class='else else kw'>else</span>
+    <span class='refresh identifier id'>refresh</span>
+    <span class='list identifier id'>list</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='r identifier id'>r</span><span class='bitor op'>|</span> <span class='r identifier id'>r</span><span class='dot token'>.</span><span class='param identifier id'>param</span> <span class='eq op'>==</span> <span class='local_param identifier id'>local_param</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="has_repo?-instance_method">
+  
+    - (<tt>true</tt>) <strong>has_repo?</strong>(local_param) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+checks to see if the list contains a repo with a param matching the one
+passed in.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>local_param</span>
+      
+      
+      
+        &mdash;
+        
+param to check.
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/repo_list.rb', line 58</span>
+
+<span class='def def kw'>def</span> <span class='has_repo? fid id'>has_repo?</span><span class='lparen token'>(</span><span class='local_param identifier id'>local_param</span><span class='rparen token'>)</span>
+  <span class='notop op'>!</span><span class='list identifier id'>list</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='r identifier id'>r</span><span class='bitor op'>|</span> <span class='r identifier id'>r</span><span class='dot token'>.</span><span class='param identifier id'>param</span> <span class='eq op'>==</span> <span class='local_param identifier id'>local_param</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="refresh-instance_method">
+  
+    - (<tt>Object</tt>) <strong>refresh</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+  <p class="note todo">
+    <strong>TODO:</strong> 
+    
+Docs: what the hell does this return?
+
+
+  </p>
+
+<p>
+searches through the configured directory globs to find all the
+repositories and adds them if they&#8217;re not already there.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/repo_list.rb', line 31</span>
+
+<span class='def def kw'>def</span> <span class='refresh identifier id'>refresh</span>
+  <span class='Ginatra constant id'>Ginatra</span><span class='colon2 op'>::</span><span class='Config constant id'>Config</span><span class='dot token'>.</span><span class='git_dirs identifier id'>git_dirs</span><span class='dot token'>.</span><span class='map! fid id'>map!</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='git_dir identifier id'>git_dir</span><span class='bitor op'>|</span>
+    <span class='files identifier id'>files</span> <span class='assign token'>=</span> <span class='Dir constant id'>Dir</span><span class='dot token'>.</span><span class='glob identifier id'>glob</span><span class='lparen token'>(</span><span class='git_dir identifier id'>git_dir</span><span class='rparen token'>)</span>
+    <span class='files identifier id'>files</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='e identifier id'>e</span><span class='bitor op'>|</span> <span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='e identifier id'>e</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='Ginatra constant id'>Ginatra</span><span class='colon2 op'>::</span><span class='Config constant id'>Config</span><span class='dot token'>.</span><span class='ignored_files identifier id'>ignored_files</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='e identifier id'>e</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='last identifier id'>last</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Wed Dec  2 18:25:44 2009 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.4.0 (ruby-1.8.6).
+</div>
+
+  </body>
+</html>

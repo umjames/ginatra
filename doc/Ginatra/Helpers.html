@@ -1,0 +1,1953 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Module: Ginatra::Helpers</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (H)</a> &raquo; 
+    <a title="Ginatra" href="../Ginatra.html">Ginatra</a>
+     &raquo; 
+    <span class="title">Helpers</span>
+  
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Namespace List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Ginatra::Helpers 
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/ginatra/helpers.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Helpers used in the views usually, but not exclusively.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+
+  <h2>Method Summary</h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#actor_box (instance method)" href="#actor_box-instance_method">- (String) <strong>actor_box</strong>(actor, role, date) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+displays the actor box easily.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#actor_boxes (instance method)" href="#actor_boxes-instance_method">- (String) <strong>actor_boxes</strong>(commit) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+works out what actor boxes need to be displayed.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#archive_link (instance method)" href="#archive_link-instance_method">- (String) <strong>archive_link</strong>(tree, repo_param) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+returns a string including the link to download a certain tree of the repo.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#atom_feed_link (instance method)" href="#atom_feed_link-instance_method">- (String) <strong>atom_feed_link</strong>(repo_param, ref = nil) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+Spits out a HTML link to the atom feed for a given ref of a given repo.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#commit_ref (instance method)" href="#commit_ref-instance_method">- (String) <strong>commit_ref</strong>(ref, repo_param) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+spits out a link to a certain reference.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#commit_refs (instance method)" href="#commit_refs-instance_method">- (String) <strong>commit_refs</strong>(commit, repo_param) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+calls <tt>Ginatra::Helpers#commit_ref</tt> for each ref in the commit.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#diff (instance method)" href="#diff-instance_method">- (String) <strong>diff</strong>(diff) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+returns some html containing the Coderay&#8217;d diff files.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#file_listing (instance method)" href="#file_listing-instance_method">- (String) <strong>file_listing</strong>(commit) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+returns a HTML (<tt>&lt;ul&gt;</tt>) list of the files altered in a given
+commit.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#gravatar_url (instance method)" href="#gravatar_url-instance_method">- (String) <strong>gravatar_url</strong>(email) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+takes an email and returns a url to a secure gravatar.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#hostname (instance method)" href="#hostname-instance_method">- (String) <strong>hostname</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+Returns the Hostname of the given install.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#html_escape (instance method)" href="#html_escape-instance_method">- (String) <strong>html_escape</strong>(clean_me) </a>
+  
+    (also: #h)
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+Cleans up the particularly volatile parts of HTML and replaces them with
+their entities.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#nicetime (instance method)" href="#nicetime-instance_method">- (String) <strong>nicetime</strong>(date) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+reformats the date into a user friendly date with html entities.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#patch_link (instance method)" href="#patch_link-instance_method">- (String) <strong>patch_link</strong>(commit, repo_param) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+returns a string including the link to download a patch for a certain
+commit to the repo.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#rfc_date (instance method)" href="#rfc_date-instance_method">- (String) <strong>rfc_date</strong>(datetime) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+Returns the rfc representation of a date, for use in the atom feeds.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#simple_format (instance method)" href="#simple_format-instance_method">- (String) <strong>simple_format</strong>(text) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+Formats the text to remove multiple spaces and newlines, and then inserts
+HTML linebreaks.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#truncate (instance method)" href="#truncate-instance_method">- (String) <strong>truncate</strong>(text, options = {}) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+Truncates a given text to a certain number of letters, including a special
+ending if needed.
+
+</span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  <div id="method_details">
+    <h2>Method Details</h2>
+    
+      <div class="method_details first">
+  <p class="signature first" id="actor_box-instance_method">
+  
+    - (<tt>String</tt>) <strong>actor_box</strong>(actor, role, date) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+displays the actor box easily.
+</p>
+<p>
+Internally, it calls the <tt>#partial</tt> method
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Grit::Actor</tt>)</span>
+      
+      
+        <span class='name'>actor</span>
+      
+      
+      
+        &mdash;
+        
+the Grit Actor Object
+
+
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>#to_s</tt>)</span>
+      
+      
+        <span class='name'>role</span>
+      
+      
+      
+        &mdash;
+        
+the role that the object has.
+
+
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>#strftime</tt>)</span>
+      
+      
+        <span class='name'>date</span>
+      
+      
+      
+        &mdash;
+        
+the date that the actor acted on.
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+a string that contains the box for the actor.
+
+
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a title="Sinatra::Partials#partial" href="../Sinatra/Partials.html#partial-instance_method">Sinatra::Partials#partial</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 35</span>
+
+<span class='def def kw'>def</span> <span class='actor_box identifier id'>actor_box</span><span class='lparen token'>(</span><span class='actor identifier id'>actor</span><span class='comma token'>,</span> <span class='role identifier id'>role</span><span class='comma token'>,</span> <span class='date identifier id'>date</span><span class='rparen token'>)</span>
+  <span class='partial identifier id'>partial</span><span class='lparen token'>(</span><span class='symbol val'>:actor_box</span><span class='comma token'>,</span> <span class='symbol val'>:locals</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrace token'>{</span> <span class='symbol val'>:actor</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='actor identifier id'>actor</span><span class='comma token'>,</span> <span class='symbol val'>:role</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='role identifier id'>role</span><span class='comma token'>,</span> <span class='symbol val'>:date</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='date identifier id'>date</span> <span class='rbrace token'>}</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="actor_boxes-instance_method">
+  
+    - (<tt>String</tt>) <strong>actor_boxes</strong>(commit) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+works out what actor boxes need to be displayed.
+</p>
+<p>
+Will always display the committer box, and will only display the author box
+if it&#8217;s different to the committer
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt><a title="Grit::Commit" href="../Grit/Commit.html">Grit::Commit</a></tt>)</span>
+      
+      
+        <span class='name'>commit</span>
+      
+      
+      
+        &mdash;
+        
+the commit in question
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+a string representing the HTML actor boxes
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+46
+47
+48
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 46</span>
+
+<span class='def def kw'>def</span> <span class='actor_boxes identifier id'>actor_boxes</span><span class='lparen token'>(</span><span class='commit identifier id'>commit</span><span class='rparen token'>)</span>
+  <span class='o identifier id'>o</span> <span class='assign token'>=</span> <span class='actor_box identifier id'>actor_box</span><span class='lparen token'>(</span><span class='commit identifier id'>commit</span><span class='dot token'>.</span><span class='committer identifier id'>committer</span><span class='comma token'>,</span> <span class='symbol val'>:committer</span><span class='comma token'>,</span> <span class='commit identifier id'>commit</span><span class='dot token'>.</span><span class='committed_date identifier id'>committed_date</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='commit identifier id'>commit</span><span class='dot token'>.</span><span class='author identifier id'>author</span><span class='dot token'>.</span><span class='name identifier id'>name</span> <span class='neq op'>!=</span> <span class='commit identifier id'>commit</span><span class='dot token'>.</span><span class='committer identifier id'>committer</span><span class='dot token'>.</span><span class='name identifier id'>name</span>
+    <span class='o identifier id'>o</span> <span class='assign token'>=</span> <span class='actor_box identifier id'>actor_box</span><span class='lparen token'>(</span><span class='commit identifier id'>commit</span><span class='dot token'>.</span><span class='author identifier id'>author</span><span class='comma token'>,</span> <span class='symbol val'>:author</span><span class='comma token'>,</span> <span class='commit identifier id'>commit</span><span class='dot token'>.</span><span class='authored_date identifier id'>authored_date</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='o identifier id'>o</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="archive_link-instance_method">
+  
+    - (<tt>String</tt>) <strong>archive_link</strong>(tree, repo_param) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+returns a string including the link to download a certain tree of the repo
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Grit::Tree</tt>)</span>
+      
+      
+        <span class='name'>tree</span>
+      
+      
+      
+        &mdash;
+        
+the tree you want an archive link for
+
+
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>repo_param</span>
+      
+      
+      
+        &mdash;
+        
+the url-sanitised-name of the repo (for the link path)
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the HTML link to the archive.
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 86</span>
+
+<span class='def def kw'>def</span> <span class='archive_link identifier id'>archive_link</span><span class='lparen token'>(</span><span class='tree identifier id'>tree</span><span class='comma token'>,</span> <span class='repo_param identifier id'>repo_param</span><span class='rparen token'>)</span>
+  <span class='dstring node'>&quot;&lt;a class=\&quot;download\&quot; href=\&quot;/#{repo_param}/archive/#{tree.id}.tar.gz\&quot; title=\&quot;Download a tar.gz snapshot of this Tree\&quot;&gt;Download Archive&lt;/a&gt;&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="atom_feed_link-instance_method">
+  
+    - (<tt>String</tt>) <strong>atom_feed_link</strong>(repo_param, ref = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Spits out a HTML link to the atom feed for a given ref of a given repo
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Sting</tt>)</span>
+      
+      
+        <span class='name'>repo_param</span>
+      
+      
+      
+        &mdash;
+        
+the url-sanitised-name of a given repo
+
+
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>ref</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        
+the ref to link to.
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the HTML containing the link to the feed.
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+228
+229
+230</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 228</span>
+
+<span class='def def kw'>def</span> <span class='atom_feed_link identifier id'>atom_feed_link</span><span class='lparen token'>(</span><span class='repo_param identifier id'>repo_param</span><span class='comma token'>,</span> <span class='ref identifier id'>ref</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='dstring node'>&quot;&lt;a href=\&quot;/#{repo_param}#{&quot;/#{ref}&quot; if !ref.nil?}.atom\&quot; title=\&quot;Atom Feed\&quot; class=\&quot;atom\&quot;&gt;Feed&lt;/a&gt;&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="commit_ref-instance_method">
+  
+    - (<tt>String</tt>) <strong>commit_ref</strong>(ref, repo_param) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+spits out a link to a certain reference.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Grit::Ref</tt>)</span>
+      
+      
+        <span class='name'>ref</span>
+      
+      
+      
+        &mdash;
+        
+grit ref object
+
+
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>repo_param</span>
+      
+      
+      
+        &mdash;
+        
+the url-sanitised-name for the repo (for the link path)
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+HTML link to the given ref with class attached.
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 60</span>
+
+<span class='def def kw'>def</span> <span class='commit_ref identifier id'>commit_ref</span><span class='lparen token'>(</span><span class='ref identifier id'>ref</span><span class='comma token'>,</span> <span class='repo_param identifier id'>repo_param</span><span class='rparen token'>)</span>
+  <span class='ref_class identifier id'>ref_class</span> <span class='assign token'>=</span> <span class='ref identifier id'>ref</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot;::&quot;</span><span class='rparen token'>)</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+  <span class='dstring node'>&quot;&lt;a class=\&quot;ref #{ref_class}\&quot; href=\&quot;/#{repo_param}/#{ref.name}\&quot;&gt;#{ref.name}&lt;/a&gt;&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="commit_refs-instance_method">
+  
+    - (<tt>String</tt>) <strong>commit_refs</strong>(commit, repo_param) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+calls <tt>Ginatra::Helpers#commit_ref</tt> for each ref in the commit
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt><a title="Grit::Commit" href="../Grit/Commit.html">Grit::Commit</a></tt>)</span>
+      
+      
+        <span class='name'>commit</span>
+      
+      
+      
+        &mdash;
+        
+grit commit object
+
+
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>repo_param</span>
+      
+      
+      
+        &mdash;
+        
+the url-sanitised-name for the repo (for the link path)
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+HTML containing all the ref links
+
+
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a title="Ginatra::Helpers#commit_ref" href="#commit_ref-instance_method">Ginatra::Helpers#commit_ref</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 74</span>
+
+<span class='def def kw'>def</span> <span class='commit_refs identifier id'>commit_refs</span><span class='lparen token'>(</span><span class='commit identifier id'>commit</span><span class='comma token'>,</span> <span class='repo_param identifier id'>repo_param</span><span class='rparen token'>)</span>
+  <span class='commit identifier id'>commit</span><span class='dot token'>.</span><span class='refs identifier id'>refs</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='r identifier id'>r</span><span class='bitor op'>|</span> <span class='commit_ref identifier id'>commit_ref</span><span class='lparen token'>(</span><span class='r identifier id'>r</span><span class='comma token'>,</span> <span class='repo_param identifier id'>repo_param</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;\n&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="diff-instance_method">
+  
+    - (<tt>String</tt>) <strong>diff</strong>(diff) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+returns some html containing the Coderay&#8217;d diff files.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>diff</span>
+      
+      
+      
+        &mdash;
+        
+the diff you want highlighted
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the highlighted diff
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+130
+131
+132</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 130</span>
+
+<span class='def def kw'>def</span> <span class='diff identifier id'>diff</span><span class='lparen token'>(</span><span class='diff identifier id'>diff</span><span class='rparen token'>)</span>
+  <span class='diff identifier id'>diff</span> <span class='assign token'>=</span> <span class='CodeRay constant id'>CodeRay</span><span class='dot token'>.</span><span class='scan identifier id'>scan</span><span class='lparen token'>(</span><span class='diff identifier id'>diff</span><span class='comma token'>,</span> <span class='symbol val'>:diff</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='div identifier id'>div</span><span class='lparen token'>(</span><span class='symbol val'>:line_numbers</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:table</span><span class='comma token'>,</span> <span class='symbol val'>:css</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:class</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="file_listing-instance_method">
+  
+    - (<tt>String</tt>) <strong>file_listing</strong>(commit) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+returns a HTML (<tt>&lt;ul&gt;</tt>) list of the files altered in a given
+commit.
+</p>
+<p>
+It includes classes for added/altered/deleted and also anchor links to the
+diffs for further down the page.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt><a title="Grit::Commit" href="../Grit/Commit.html">Grit::Commit</a></tt>)</span>
+      
+      
+        <span class='name'>commit</span>
+      
+      
+      
+        &mdash;
+        
+the commit you want the list of files for
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+a <tt>&lt;ul&gt;</tt> with lots of <tt>&lt;li&gt;</tt> children.
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 110</span>
+
+<span class='def def kw'>def</span> <span class='file_listing identifier id'>file_listing</span><span class='lparen token'>(</span><span class='commit identifier id'>commit</span><span class='rparen token'>)</span>
+  <span class='comment val'># The only reason this doesn't work 100% of the time is because grit doesn't :/</span>
+  <span class='comment val'># if i find a fix, it'll go upstream :D</span>
+  <span class='count identifier id'>count</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
+  <span class='out identifier id'>out</span> <span class='assign token'>=</span> <span class='commit identifier id'>commit</span><span class='dot token'>.</span><span class='diffs identifier id'>diffs</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='diff identifier id'>diff</span><span class='bitor op'>|</span>
+    <span class='count identifier id'>count</span> <span class='assign token'>=</span> <span class='count identifier id'>count</span> <span class='plus op'>+</span> <span class='integer val'>1</span>
+    <span class='if if kw'>if</span> <span class='diff identifier id'>diff</span><span class='dot token'>.</span><span class='deleted_file identifier id'>deleted_file</span>
+      <span class='dstring node'>%(&lt;li class='file_rm'&gt;&lt;a href='#file_#{count}'&gt;#{diff.a_path}&lt;/a&gt;&lt;/li&gt;)</span>
+    <span class='else else kw'>else</span>
+      <span class='cla identifier id'>cla</span> <span class='assign token'>=</span> <span class='diff identifier id'>diff</span><span class='dot token'>.</span><span class='new_file identifier id'>new_file</span> <span class='integer val'>? </span><span class='string val'>&quot;add&quot;</span> <span class='colon op'>:</span> <span class='string val'>&quot;diff&quot;</span>
+      <span class='dstring node'>%(&lt;li class='file_#{cla}'&gt;&lt;a href='#file_#{count}'&gt;#{diff.a_path}&lt;/a&gt;&lt;/li&gt;)</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='dstring node'>&quot;&lt;ul id='files'&gt;#{out.join}&lt;/ul&gt;&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="gravatar_url-instance_method">
+  
+    - (<tt>String</tt>) <strong>gravatar_url</strong>(email) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+takes an email and returns a url to a secure gravatar
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>email</span>
+      
+      
+      
+        &mdash;
+        
+the email address
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the url to the gravatar
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 12</span>
+
+<span class='def def kw'>def</span> <span class='gravatar_url identifier id'>gravatar_url</span><span class='lparen token'>(</span><span class='email identifier id'>email</span><span class='rparen token'>)</span>
+  <span class='dstring node'>&quot;https://secure.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}?s=40&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="hostname-instance_method">
+  
+    - (<tt>String</tt>) <strong>hostname</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+  <p class="note todo">
+    <strong>TODO:</strong> 
+    
+Where is this used?
+
+
+stolen from Marley
+
+
+  </p>
+
+<p>
+Returns the Hostname of the given install.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the hostname of the server. Respects HTTP-X-Forwarded-For
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+218
+219
+220</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 218</span>
+
+<span class='def def kw'>def</span> <span class='hostname identifier id'>hostname</span>
+  <span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='dot token'>.</span><span class='env identifier id'>env</span><span class='lbrack token'>[</span><span class='string val'>'HTTP_X_FORWARDED_SERVER'</span><span class='rbrack token'>]</span> <span class='match op'>=~</span> <span class='regexp val'>/[a-z]*/</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='request identifier id'>request</span><span class='dot token'>.</span><span class='env identifier id'>env</span><span class='lbrack token'>[</span><span class='string val'>'HTTP_X_FORWARDED_SERVER'</span><span class='rbrack token'>]</span> <span class='colon op'>:</span> <span class='request identifier id'>request</span><span class='dot token'>.</span><span class='env identifier id'>env</span><span class='lbrack token'>[</span><span class='string val'>'HTTP_HOST'</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="html_escape-instance_method">
+  
+    - (<tt>String</tt>) <strong>html_escape</strong>(clean_me) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='h-instance_method'>h</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Cleans up the particularly volatile parts of HTML and replaces them with
+their entities. Replaces the following characters:
+</p>
+<pre class="code">
+ <span class='minus op'>-</span> <span class='bitand op'>&amp;</span>
+ <span class='minus op'>-</span> <span class='gt op'>&gt;</span>
+ <span class='minus op'>-</span> <span class='lt op'>&lt;</span>
+ <span class='minus op'>-</span> <span class='string val'>'
+</span></pre>
+<p>
+If you are using this with #simple_format, do not forget to call this one
+first, then put in unsanitised linebreaks. The other way around is full of
+fail.
+</p>
+<p>
+stolen from rails: ERB::Util
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>#to_s</tt>)</span>
+      
+      
+        <span class='name'>clean_me</span>
+      
+      
+      
+        &mdash;
+        
+the object to clean.
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the cleaned html text.
+
+
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a title="Ginatra::Helpers#simple_format" href="#simple_format-instance_method">Ginatra::Helpers#simple_format</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+170
+171
+172
+173
+174
+175
+176
+177</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 170</span>
+
+<span class='def def kw'>def</span> <span class='html_escape identifier id'>html_escape</span><span class='lparen token'>(</span><span class='clean_me identifier id'>clean_me</span><span class='rparen token'>)</span>
+  <span class='clean_me identifier id'>clean_me</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/[&amp;&quot;&lt;&gt;]/</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='special identifier id'>special</span><span class='bitor op'>|</span>
+    <span class='lbrace token'>{</span> <span class='string val'>'&amp;'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'&amp;amp;'</span><span class='comma token'>,</span>
+      <span class='string val'>'&gt;'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'&amp;gt;'</span><span class='comma token'>,</span>
+      <span class='string val'>'&lt;'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'&amp;lt;'</span><span class='comma token'>,</span>
+      <span class='string val'>'&quot;'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'&amp;quot;'</span> <span class='rbrace token'>}</span><span class='lbrack token'>[</span><span class='special identifier id'>special</span><span class='rbrack token'>]</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="nicetime-instance_method">
+  
+    - (<tt>String</tt>) <strong>nicetime</strong>(date) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+reformats the date into a user friendly date with html entities
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>#strftime</tt>)</span>
+      
+      
+        <span class='name'>date</span>
+      
+      
+      
+        &mdash;
+        
+object to format nicely
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+html string formatted using <tt>&quot;%b %d, %Y &amp;ndash;
+%H:%M&quot;</tt>
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 21</span>
+
+<span class='def def kw'>def</span> <span class='nicetime identifier id'>nicetime</span><span class='lparen token'>(</span><span class='date identifier id'>date</span><span class='rparen token'>)</span>
+  <span class='date identifier id'>date</span><span class='dot token'>.</span><span class='strftime identifier id'>strftime</span><span class='lparen token'>(</span><span class='string val'>&quot;%b %d, %Y &amp;ndash; %H:%M&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="patch_link-instance_method">
+  
+    - (<tt>String</tt>) <strong>patch_link</strong>(commit, repo_param) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+returns a string including the link to download a patch for a certain
+commit to the repo
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt><a title="Grit::Commit" href="../Grit/Commit.html">Grit::Commit</a></tt>)</span>
+      
+      
+        <span class='name'>commit</span>
+      
+      
+      
+        &mdash;
+        
+the commit you want a patch for
+
+
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>repo_param</span>
+      
+      
+      
+        &mdash;
+        
+the url-sanitised name for the repo (for the link path)
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the HTML link to the patch
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 98</span>
+
+<span class='def def kw'>def</span> <span class='patch_link identifier id'>patch_link</span><span class='lparen token'>(</span><span class='commit identifier id'>commit</span><span class='comma token'>,</span> <span class='repo_param identifier id'>repo_param</span><span class='rparen token'>)</span>
+  <span class='dstring node'>&quot;&lt;a class=\&quot;download\&quot; href=\&quot;/#{repo_param}/commit/#{commit.id}.patch\&quot; title=\&quot;Download a patch file of this Commit\&quot;&gt;Download Patch&lt;/a&gt;&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="rfc_date-instance_method">
+  
+    - (<tt>String</tt>) <strong>rfc_date</strong>(datetime) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the rfc representation of a date, for use in the atom feeds.
+</p>
+<p>
+stolen from Marley
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>DateTime</tt>)</span>
+      
+      
+        <span class='name'>datetime</span>
+      
+      
+      
+        &mdash;
+        
+the date to format
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the formatted datetime
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+207
+208
+209</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 207</span>
+
+<span class='def def kw'>def</span> <span class='rfc_date identifier id'>rfc_date</span><span class='lparen token'>(</span><span class='datetime identifier id'>datetime</span><span class='rparen token'>)</span>
+  <span class='datetime identifier id'>datetime</span><span class='dot token'>.</span><span class='strftime identifier id'>strftime</span><span class='lparen token'>(</span><span class='string val'>&quot;%Y-%m-%dT%H:%M:%SZ&quot;</span><span class='rparen token'>)</span> <span class='comment val'># 2003-12-13T18:30:02Z</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="simple_format-instance_method">
+  
+    - (<tt>String</tt>) <strong>simple_format</strong>(text) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Formats the text to remove multiple spaces and newlines, and then inserts
+HTML linebreaks.
+</p>
+<p>
+Stolen from rails: ActionView::Helpers::TextHelper#simple_format and
+simplified to just use <p> tags without any options, then modified more
+later.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>text</span>
+      
+      
+      
+        &mdash;
+        
+the text you want formatted
+
+
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the formatted text
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+144
+145
+146
+147
+148
+149</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 144</span>
+
+<span class='def def kw'>def</span> <span class='simple_format identifier id'>simple_format</span><span class='lparen token'>(</span><span class='text identifier id'>text</span><span class='rparen token'>)</span>
+  <span class='text identifier id'>text</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/ +/</span><span class='comma token'>,</span> <span class='string val'>&quot; &quot;</span><span class='rparen token'>)</span>
+  <span class='text identifier id'>text</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/\r\n?/</span><span class='comma token'>,</span> <span class='string val'>&quot;\n&quot;</span><span class='rparen token'>)</span>
+  <span class='text identifier id'>text</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/\n/</span><span class='comma token'>,</span> <span class='string val'>&quot;&lt;br /&gt;\n&quot;</span><span class='rparen token'>)</span>
+  <span class='text identifier id'>text</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="truncate-instance_method">
+  
+    - (<tt>String</tt>) <strong>truncate</strong>(text, options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Truncates a given text to a certain number of letters, including a special
+ending if needed.
+</p>
+<p>
+Stolen and bastardised from rails
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>text</span>
+      
+      
+      
+        &mdash;
+        
+the text to truncate
+
+
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="name">:length</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>30</tt>
+            
+          </span>
+          &mdash;
+the length you want the output string
+
+
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="name">:omission</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>&quot;...&quot;</tt>
+            
+          </span>
+          &mdash;
+the string to show an omission.
+
+
+        </tr>
+      
+    </ul>
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+the truncated text.
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ginatra/helpers.rb', line 189</span>
+
+<span class='def def kw'>def</span> <span class='truncate identifier id'>truncate</span><span class='lparen token'>(</span><span class='text identifier id'>text</span><span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+    <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:length</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='integer val'>30</span>
+    <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:omission</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='string val'>&quot;...&quot;</span>
+
+  <span class='if if kw'>if</span> <span class='text identifier id'>text</span>
+    <span class='l identifier id'>l</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:length</span><span class='rbrack token'>]</span> <span class='minus op'>-</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:omission</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='length identifier id'>length</span>
+    <span class='chars identifier id'>chars</span> <span class='assign token'>=</span> <span class='text identifier id'>text</span>
+    <span class='stop identifier id'>stop</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:separator</span><span class='rbrack token'>]</span> <span class='question op'>?</span> <span class='lparen token'>(</span><span class='chars identifier id'>chars</span><span class='dot token'>.</span><span class='rindex identifier id'>rindex</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:separator</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='l identifier id'>l</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='l identifier id'>l</span><span class='rparen token'>)</span> <span class='colon op'>:</span> <span class='l identifier id'>l</span>
+    <span class='lparen token'>(</span><span class='chars identifier id'>chars</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='gt op'>&gt;</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:length</span><span class='rbrack token'>]</span> <span class='question op'>?</span> <span class='chars identifier id'>chars</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='dot3 op'>...</span><span class='stop identifier id'>stop</span><span class='rbrack token'>]</span> <span class='plus op'>+</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:omission</span><span class='rbrack token'>]</span> <span class='colon op'>:</span> <span class='text identifier id'>text</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Wed Dec  2 18:25:45 2009 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.4.0 (ruby-1.8.6).
+</div>
+
+  </body>
+</html>
