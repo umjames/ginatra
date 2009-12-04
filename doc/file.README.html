@@ -35,24 +35,27 @@
     
     <iframe id="search_frame"></iframe>
     
-    <div id="content"><div id='filecontents'><h1>Ginatra</h1>
+    <div id="content"><div id='filecontents'><h1 id='ginatra'>Ginatra</h1>
 
-<p>This project  is to make a  clone of gitweb in  Ruby and Sinatra. It  serves git
-repositories out of a set of  specified directories using an array of glob-based
-paths. I have plans to make it  function just as gitweb does, including leeching
-config files and suchlike.</p>
+<p>This project is to make a clone of gitweb in Ruby and Sinatra. It serves git repositories out of a set of specified directories using an array of glob-based paths. I have plans to make it function just as gitweb does, including leeching config files and suchlike.</p>
 
-<h1>Updating to Multiple directory repositories:</h1>
+<h2 id='updating_to_the_most_recent_release_gem'>Updating to the Most Recent Release (Gem):</h2>
 
 <ul>
-<li>Remove any bare cloned repositories from <code>./repos/</code></li>
-<li>Execute the following: <code>rake setup:repo</code> which creates a non-bare test repo in
-<code>./repos/</code></li>
+<li><code> $ gem install ginatra</code></li>
+
+<li>(re)Move <code>~/.ginatra</code></li>
+
+<li>Run the following to open an irb with Ginatra loaded: <code> $ irb -r &#39;rubygems&#39; -r &#39;rubygems&#39;</code></li>
+
+<li>In this irb session, run the following then close it: <code>&gt;&gt; Ginatra::Config.setup!</code></li>
 </ul>
 
-<p>Simple eh?</p>
+<p><strong>BEWARE</strong>: The last method that you just called will dump a config to <code>~/.ginatra/config.yml</code>. This ignores anything already there, so be careful. You have been warned.</p>
 
-<h2>Installation</h2>
+<p>You can now copy the contents your old <code>~/.ginatra/</code> file into <code>~/.ginatra/config.yml</code>.</p>
+
+<h2 id='installation'>Installation</h2>
 
 <p>You should be using Git 1.6.3 or later just to be sure that it all works:</p>
 
@@ -60,121 +63,106 @@ config files and suchlike.</p>
 <span class='git identifier id'>git</span> <span class='version identifier id'>version</span> <span class='float val'>1.6</span><span class='integer val'>.3</span>
 </pre>
 
-<p>You'll need a few gems just to serve git repositories, for page caching, syntax highlighting &amp; a sinatra daemon runner:</p>
+<p>Next, just do the following (your setup may require sudo):</p>
 
-<pre class="code">$ <span class='lparen token'>(</span><span class='sudo identifier id'>sudo</span><span class='rparen token'>)</span> <span class='gem identifier id'>gem</span> <span class='install identifier id'>install</span> <span class='grit identifier id'>grit</span> <span class='kematzy identifier id'>kematzy</span><span class='minus op'>-</span><span class='sinatra identifier id'>sinatra</span><span class='minus op'>-</span><span class='cache identifier id'>cache</span> <span class='coderay identifier id'>coderay</span> <span class='vegas identifier id'>vegas</span>
+<pre class="code">$ <span class='gem identifier id'>gem</span> <span class='install identifier id'>install</span> <span class='ginatra identifier id'>ginatra</span>
 </pre>
 
-<p>To run the test suite, you also need:</p>
+<p>This pulls down all the required dependencies too.</p>
 
-<pre class="code">$ <span class='lparen token'>(</span><span class='sudo identifier id'>sudo</span><span class='rparen token'>)</span> <span class='gem identifier id'>gem</span> <span class='install identifier id'>install</span> <span class='rspec identifier id'>rspec</span> <span class='webrat identifier id'>webrat</span> <span class='rack identifier id'>rack</span><span class='minus op'>-</span><span class='test identifier id'>test</span> <span class='cucumber identifier id'>cucumber</span>
+<p>If you want to play around with the code, you can clone the repository. This also allows you to use a special rackup file to mount it where you wish. I am yet to sort out some of the details of running Ginatra from a gem with a rackup.ru file.</p>
+
+<h2 id='usage'>Usage</h2>
+
+<p>If you&#8217;re just using it in development, use the following to start, check and stop Ginatra respectively:</p>
+
+<pre class="code">$ <span class='ginatra identifier id'>ginatra</span> <span class='server identifier id'>server</span> <span class='start identifier id'>start</span>
+$ <span class='ginatra identifier id'>ginatra</span> <span class='server identifier id'>server</span> <span class='status identifier id'>status</span>
+$ <span class='ginatra identifier id'>ginatra</span> <span class='server identifier id'>server</span> <span class='stop identifier id'>stop</span>
 </pre>
 
-<p>To do both these steps more quickly, run the following rake tasks:</p>
+<p>Ginatra also runs on thin, with the approach outlined above.</p>
 
-<pre class="code">$ <span class='rake identifier id'>rake</span> <span class='setup identifier id'>setup</span><span class='symbol val'>:gems</span>
-$ <span class='rake identifier id'>rake</span> <span class='setup identifier id'>setup</span><span class='symbol val'>:test</span>
+<p><strong>BEWARE:</strong> There are issues running Ginatra on Passenger. We discourage Ginatra&#8217;s use on Passenger until we can make it stable.</p>
+
+<p>Ginatra can also start a git-daemon serving all the repositories that ginatra serves:</p>
+
+<pre class="code">$ <span class='ginatra identifier id'>ginatra</span> <span class='daemon identifier id'>daemon</span> <span class='start identifier id'>start</span>
+$ <span class='ginatra identifier id'>ginatra</span> <span class='daemon identifier id'>daemon</span> <span class='status identifier id'>status</span>
+$ <span class='ginatra identifier id'>ginatra</span> <span class='daemon identifier id'>daemon</span> <span class='stop identifier id'>stop</span>
 </pre>
 
-<p>Then clone this repository:</p>
+<p>This runs on the default git daemon port.</p>
 
-<pre class="code">$ <span class='git identifier id'>git</span> <span class='clone identifier id'>clone</span> <span class='git identifier id'>git</span><span class='symbol val'>:/</span><span class='regexp val'>/github.com/</span><span class='lenary identifier id'>lenary</span><span class='div op'>/</span><span class='ginatra identifier id'>ginatra</span><span class='dot token'>.</span><span class='git identifier id'>git</span>
+<p>You can add a glob specified list of git repositories for ginatra to serve using the following commands:</p>
+
+<pre class="code">$ <span class='ginatra identifier id'>ginatra</span> <span class='directory identifier id'>directory</span> <span class='add identifier id'>add</span> <span class='string val'>'~/Git/ginatra/*'</span>
+$ <span class='ginatra identifier id'>ginatra</span> <span class='directory identifier id'>directory</span> <span class='list identifier id'>list</span>
+$ <span class='ginatra identifier id'>ginatra</span> <span class='directory identifier id'>directory</span> <span class='remove identifier id'>remove</span> <span class='string val'>'~/Git/ginatra/*'</span>
 </pre>
 
-<p>You'll  also need  to  (<code>--bare</code>) clone  <code>atmos/hancock-client</code>  into the  repos
-directory and call it test: (don't ask, it was just a repo i chose at random)</p>
+<p>These should be fairly self explanatory. Help is shown with either the &#8211;help option or by not specifying a sub-command like start, status, stop, add, list or remove.</p>
 
-<pre class="code">$ <span class='cd identifier id'>cd</span> <span class='repos identifier id'>repos</span> <span class='andop op'>&amp;&amp;</span> <span class='git identifier id'>git</span> <span class='clone identifier id'>clone</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='bare identifier id'>bare</span> <span class='git identifier id'>git</span><span class='symbol val'>:/</span><span class='regexp val'>/github.com/</span><span class='atmos identifier id'>atmos</span><span class='div op'>/</span><span class='hancock identifier id'>hancock</span><span class='minus op'>-</span><span class='client identifier id'>client</span><span class='dot token'>.</span><span class='git identifier id'>git</span> <span class='test identifier id'>test</span><span class='dot token'>.</span><span class='git identifier id'>git</span>
-</pre>
-
-<p>This can be done much quicker by doing the following rake task</p>
-
-<pre class="code">$ <span class='rake identifier id'>rake</span> <span class='setup identifier id'>setup</span><span class='symbol val'>:repo</span>
-</pre>
-
-<h2>Usage</h2>
-
-<p>If you're just using it in development, use the following to run Ginatra:</p>
-
-<pre class="code">$ <span class='ruby identifier id'>ruby</span> <span class='ginatra identifier id'>ginatra</span><span class='dot token'>.</span><span class='rb identifier id'>rb</span>
-</pre>
-
-<p>Ginatra  also runs  on thin.  <strong>BEWARE:</strong> There  are issues  running Ginatra  on
-Passenger. We discourage Ginatra's use on Passenger until we can make it stable.</p>
-
-<p>I have made a rake task so that  you can easily add repositories to Ginatra. Use
-the following to add repositories to Ginatra, without fear of getting it wrong:</p>
-
-<pre class="code">$ <span class='rake identifier id'>rake</span> <span class='add identifier id'>add</span> <span class='repo identifier id'>repo</span><span class='assign token'>=</span><span class='string val'>'git://github.com/lenary/ginatra.git'</span>
-$ <span class='rake identifier id'>rake</span> <span class='add identifier id'>add</span> <span class='repo identifier id'>repo</span><span class='assign token'>=</span><span class='string val'>'git://github.com/mojombo/grit.git'</span> <span class='name identifier id'>name</span><span class='assign token'>=</span><span class='string val'>'fun'</span>
-</pre>
-
-<h2>Authors &amp; Thanks</h2>
+<h2 id='attribution'>Attribution</h2>
 
 <p><strong>Authors:</strong></p>
 
 <ul>
 <li>Samuel Elliott (lenary)</li>
+
 <li>Ryan Bigg (radar)</li>
+</ul>
+
+<p><strong>Patches</strong></p>
+
+<ul>
+<li>James Tucker (raggi)</li>
+
+<li>Elia Schito (elia)</li>
+
+<li>Scott Wisely (Syd)</li>
+
+<li>Jonathan Stott (namelessjon)</li>
 </ul>
 
 <p><strong>Thanks</strong></p>
 
-<ul>
-<li>tekkub - For help with Grit</li>
-<li>schacon - For help with Grit</li>
-<li>cirwin - For moral support and design help</li>
-<li>irc://irc.freenode.net/git - for any other problems I had</li>
-<li>Picol Project (http://picol.org) - for the icons</li>
-<li>sr - For help with a large sinatra error</li>
-<li>raggi - For a refactor and several feature suggestions</li>
-</ul>
+<p>Too many to name. Thanks be to you all.</p>
 
-<h2>Screenshots</h2>
+<h2 id='screenshots'>Screenshots</h2>
 
 <p><strong>Index</strong></p>
 
-<p><img src="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYox8M&amp;w=500&amp;h=500" alt="Ginatra Index" title="Ginatra Index"/></p>
+<p><img src='http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYox8M&amp;w=500&amp;h=500' alt='Ginatra Index' /></p>
 
 <p><strong>Log</strong></p>
 
-<p><img src="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYvRcM&amp;w=500&amp;h=500" alt="Ginatra Log" title="Ginatra Log"/></p>
+<p><img src='http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYvRcM&amp;w=500&amp;h=500' alt='Ginatra Log' /></p>
 
 <p><strong>Commit</strong></p>
 
-<p><img src="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYvBcM&amp;w=500&amp;h=500" alt="Ginatra Commit" title="Ginatra Commit"/></p>
+<p><img src='http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYvBcM&amp;w=500&amp;h=500' alt='Ginatra Commit' /></p>
 
 <p><strong>Tree</strong></p>
 
-<p><img src="http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYpB8M&amp;w=500&amp;h=500" alt="Ginatra Tree" title="Ginatra Tree"/></p>
+<p><img src='http://lenary-uploads.appspot.com/img/i?id=ag5sZW5hcnktdXBsb2Fkc3IMCxIFSW1hZ2UYpB8M&amp;w=500&amp;h=500' alt='Ginatra Tree' /></p>
 
-<h2>Licence</h2>
+<h2 id='licence'>Licence</h2>
 
 <p>The MIT License</p>
 
 <p>Copyright (c) 2009 Samuel Elliott</p>
 
-<p>Permission is hereby granted, free of charge,  to any person obtaining a copy of
-this software  and associated documentation  files (the "Software"), to  deal in
-the Software  without restriction,  including without  limitation the  rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to  whom the Software is furnished to do so,
-subject to the following conditions:</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &#8220;Software&#8221;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
 
-<p>The above copyright  notice and this permission notice shall  be included in all
-copies or substantial portions of the Software.</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
 
-<p>THE  SOFTWARE IS  PROVIDED "AS  IS", WITHOUT  WARRANTY OF  ANY KIND,  EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR  PURPOSE AND NONINFRINGEMENT. IN NO EVENT  SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE  LIABLE FOR ANY CLAIM, DAMAGES OR  OTHER LIABILITY, WHETHER
-IN  AN ACTION  OF  CONTRACT, TORT  OR  OTHERWISE,  ARISING FROM,  OUT  OF OR  IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></div></div>
+<p>THE SOFTWARE IS PROVIDED &#8220;AS IS&#8221;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></div></div>
     
     <div id="footer">
-  Generated on Wed Dec  2 18:25:43 2009 by 
+  Generated on Fri Dec  4 17:15:04 2009 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.4.0 (ruby-1.8.6).
+  0.4.0 (ruby-1.8.7).
 </div>
 
   </body>

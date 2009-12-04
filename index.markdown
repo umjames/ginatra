@@ -19,7 +19,7 @@ nav:
     link: '#licence'
 links:
   - text: "API Docs"
-    link: 'http://lenary.github.com/ginatra/docs/'
+    link: 'http://lenary.github.com/ginatra/doc/'
   - text: 'ginatra.lenary.co.uk'
     link: 'http://ginatra.lenary.co.uk'
   - text: 'twitter.com/ginatra'
