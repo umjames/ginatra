@@ -3,7 +3,7 @@
 <div class="active">
   <ul class="commit-tree">
     <% @tree.trees.each do |tree| %>
-      <% tree_path = "/#{tree.name}"%>
+      <% tree_path = "#{tree.name}"%>
       <li class="tree"><a href="<%= @path[:tree] %><%= tree_path %>"><%= tree.basename %></a>
         <ul>
           <% tree.trees.each do |next_tree| %>
