@@ -6,17 +6,14 @@ module Ginatra
   module Helpers
 
     # constructs the URL used in the layout's base tag
-    def base_url
-      scheme = request.scheme
-      host = request.host
-      port = request.port.to_s
+    def prefix_url(rest_of_url="")
       prefix = Ginatra::Config[:prefix].to_s
       
       if prefix.length > 0 && prefix[-1].chr == "/"
         prefix.chop!
       end
       
-      "#{scheme}://#{host}:#{port}#{prefix}/"
+      "#{prefix}/#{rest_of_url}"
     end
 
     # takes an email and returns a url to a secure gravatar
@@ -73,7 +70,7 @@ module Ginatra
     # @return [String] HTML link to the given ref with class attached.
     def commit_ref(ref, repo_param)
       ref_class = ref.class.to_s.split("::")[1].to_s
-      "<a class=\"ref #{ref_class}\" href=\"#{repo_param}/#{ref.name}\">#{ref.name}</a>"
+      "<a class=\"ref #{ref_class}\" href=\"" + prefix_url("#{repo_param}/#{ref.name}") + "\">#{ref.name}</a>"
     end
 
     # calls +Ginatra::Helpers#commit_ref+ for each ref in the commit
@@ -98,7 +95,7 @@ module Ginatra
     #
     # @return [String] the HTML link to the archive.
     def archive_link(tree, repo_param)
-      "<a class=\"download\" href=\"#{repo_param}/archive/#{tree.id}.tar.gz\" title=\"Download a tar.gz snapshot of this Tree\">Download Archive</a>"
+      "<a class=\"download\" href=\"" + prefix_url("#{repo_param}/archive/#{tree.id}.tar.gz") + "\" title=\"Download a tar.gz snapshot of this Tree\">Download Archive</a>"
     end
 
     # returns a string including the link to download a patch for a certain
@@ -110,7 +107,7 @@ module Ginatra
     #
     # @return [String] the HTML link to the patch
     def patch_link(commit, repo_param)
-      "<a class=\"download\" href=\"#{repo_param}/commit/#{commit.id}.patch\" title=\"Download a patch file of this Commit\">Download Patch</a>"
+      "<a class=\"download\" href=\"" + prefix_url("#{repo_param}/commit/#{commit.id}.patch") + "\" title=\"Download a patch file of this Commit\">Download Patch</a>"
     end
 
     # returns a HTML (+<ul>+) list of the files altered in a given commit.
@@ -240,7 +237,7 @@ module Ginatra
     #
     # @return [String] the HTML containing the link to the feed.
     def atom_feed_link(repo_param, ref=nil)
-      "<a href=\"#{repo_param}#{"/#{ref}" if !ref.nil?}.atom\" title=\"Atom Feed\" class=\"atom\">Feed</a>"
+      "<a href=\"" + prefix_url("#{repo_param}#{"/#{ref}" if !ref.nil?}.atom") + "\" title=\"Atom Feed\" class=\"atom\">Feed</a>"
     end
 
   end
