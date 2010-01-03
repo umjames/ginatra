@@ -88,6 +88,8 @@ module Ginatra
     #
     # @todo how does this work?
     get '/' do
+      #repo_list = Ginatra::RepoList.list
+      #logger.debug "Repo list = #{repo_list.join(", ")}"
       erb :index
     end
 

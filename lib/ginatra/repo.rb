@@ -82,5 +82,8 @@ module Ginatra
       @repo.send(sym, *args, &block)
     end
 
+    def to_s
+      @name.to_s
+    end
   end
 end
